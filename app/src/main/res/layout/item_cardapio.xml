@@ -26,7 +26,8 @@
             android:layout_weight="5"
             android:layout_gravity="center_vertical"
             android:text="TextView"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="90dp"/>
 
         <ImageButton
             android:id="@+id/btEditarProduto"
