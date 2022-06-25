@@ -19,7 +19,7 @@ public abstract class provaDatabase extends RoomDatabase {
 
     public static synchronized provaDatabase getInstance(Context context){
         if(instancia==null)
-            instancia = Room.databaseBuilder(context, provaDatabase.class, NOME_DB).allowMainThreadQueries().build();
+            instancia = Room.databaseBuilder(context, provaDatabase.class, NOME_DB).allowMainThreadQueries().fallbackToDestructiveMigration().build();
         return instancia;
     }
 
