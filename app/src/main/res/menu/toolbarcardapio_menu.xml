@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/btAdicionarProduto"
+        android:title="Adicionar"
+        android:icon="@drawable/ic_adicionar"
+        app:showAsAction="always"
+        />
+</menu>
