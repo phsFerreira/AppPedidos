@@ -52,9 +52,9 @@
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/btSelecionarImagem"
+        app:layout_constraintStart_toEndOf="@+id/btSelecionarImagem"
+        app:layout_constraintTop_toTopOf="@+id/btSelecionarImagem"
         app:layout_constraintVertical_bias="0.508" />
 
     <EditText
@@ -102,18 +102,18 @@
         android:id="@+id/btCadastrarProduto"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/btSelecionarImagem" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btSelecionarImagem"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/txtDesconto"
         app:layout_constraintTop_toBottomOf="@+id/txtDesconto"
         app:srcCompat="@android:drawable/ic_menu_gallery" />

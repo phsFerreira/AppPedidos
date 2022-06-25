@@ -50,47 +50,55 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        String nome;
-        String preco;
-        String desconto;
-        nome=txtNome.getText().toString();
-        preco=txtPreco.getText().toString();
+        switch (view.getId()) {
+            case R.id.btSelecionarImagem:
 
-        desconto=txtDesconto.getText().toString();
+                break;
 
-        if(produto_id==-1){
-            if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty())
-                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
-            else{
-                Produto prod=new Produto();
-                prod.nome=nome;
-                prod.preco=  Double.parseDouble(preco);
-                prod.desconto= Double.parseDouble(desconto);
-                provaDB.produtoDAO().insert(prod);
+            case R.id.btCadastrarProduto:
+                String nome;
+                String preco;
+                String desconto;
+                nome=txtNome.getText().toString();
+                preco=txtPreco.getText().toString();
 
-                Intent it=new Intent(this, GerenciarCardapio.class);
-                startActivity(it);
-            }
-        }
-        else{
-            prod=provaDB.produtoDAO().findById(produto_id);
+                desconto=txtDesconto.getText().toString();
 
-            txtNome.setText(prod.nome);
-            txtPreco.setText(prod.preco.toString());
-            txtDesconto.setText(prod.preco.toString());
+                if(produto_id==-1){
+                    if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty())
+                        Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                    else{
+                        Produto prod=new Produto();
+                        prod.nome=nome;
+                        prod.preco=  Double.parseDouble(preco);
+                        prod.desconto= Double.parseDouble(desconto);
+                        provaDB.produtoDAO().insert(prod);
 
-            nome=txtNome.getText().toString();
-            preco=txtPreco.getText().toString();
-            desconto=txtDesconto.getText().toString();
+                        Intent it=new Intent(this, GerenciarCardapio.class);
+                        startActivity(it);
+                    }
+                }
+                else{
+                    prod=provaDB.produtoDAO().findById(produto_id);
 
-            prod.nome=nome;
-            prod.preco=Double.parseDouble(preco);
-            prod.desconto=Double.parseDouble(desconto);
+                    txtNome.setText(prod.nome);
+                    txtPreco.setText(prod.preco.toString());
+                    txtDesconto.setText(prod.preco.toString());
 
-            provaDB.produtoDAO().update(prod);
+                    nome=txtNome.getText().toString();
+                    preco=txtPreco.getText().toString();
+                    desconto=txtDesconto.getText().toString();
 
-            Intent it=new Intent(this, GerenciarCardapio.class);
-            startActivity(it);
+                    prod.nome=nome;
+                    prod.preco=Double.parseDouble(preco);
+                    prod.desconto=Double.parseDouble(desconto);
+
+                    provaDB.produtoDAO().update(prod);
+
+                    Intent it=new Intent(this, GerenciarCardapio.class);
+                    startActivity(it);
+                }
+                break;
         }
     }
 
@@ -100,4 +108,6 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         startActivity(it);
         return true;
     }
+
+
 }
