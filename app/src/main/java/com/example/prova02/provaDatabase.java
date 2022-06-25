@@ -22,7 +22,6 @@ public abstract class provaDatabase extends RoomDatabase {
             instancia = Room.databaseBuilder(context, provaDatabase.class, NOME_DB).allowMainThreadQueries().fallbackToDestructiveMigration().build();
         return instancia;
     }
-
     public abstract UsuarioDAO usuarioDAO();
     public abstract ProdutoDAO produtoDAO();
 }
