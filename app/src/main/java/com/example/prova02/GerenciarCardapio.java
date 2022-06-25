@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -74,7 +75,8 @@ public class GerenciarCardapio extends AppCompatActivity {
                 return true;
 
             case R.id.btAdicionarProduto:
-                Toast.makeText(this, "clicou", Toast.LENGTH_SHORT).show();
+                Intent it=new Intent(this, TelaAdicionarEditar.class);
+                startActivity(it);;
                 break;
             }
         return super.onOptionsItemSelected(item);
