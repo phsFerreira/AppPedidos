@@ -3,6 +3,7 @@ package com.example.prova02;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -29,7 +30,27 @@ public class GerenciarCardapio extends AppCompatActivity {
 
         provaDB=provaDatabase.getInstance(getApplicationContext());
 
-        //produtos=provaDB;
+        produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAll();
+        rvProdutos=(RecyclerView) findViewById(R.id.rvLista);
+        rvProdutos.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        adapter=new ProdutoAdapter(this, produtos, new ProdutoAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(Produto produto) {
+
+            }
+
+            @Override
+            public void btEditarClick(Produto produto) {
+                Toast.makeText(GerenciarCardapio.this, "Clicou", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void btExcluirClick(int position, Produto produto) {
+                Toast.makeText(GerenciarCardapio.this, "Clicou", Toast.LENGTH_SHORT).show();
+            }
+        });
+        rvProdutos.setAdapter(adapter);
 
         toolbar=findViewById(R.id.toolbarTeste);
         setSupportActionBar(toolbar);

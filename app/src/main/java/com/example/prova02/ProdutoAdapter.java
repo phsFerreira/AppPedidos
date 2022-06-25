@@ -22,7 +22,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
 
     public ProdutoAdapter(Context c, ArrayList<Produto> lista, ItemClickListener itemClickListener){
         context=c;
-        lista=listaProdutos;
+        listaProdutos=lista;
         listener=itemClickListener;
     }
 

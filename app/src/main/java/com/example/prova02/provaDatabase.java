@@ -6,7 +6,6 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.prova02.DAOs.PedidoDAO;
 import com.example.prova02.DAOs.ProdutoDAO;
 import com.example.prova02.DAOs.UsuarioDAO;
 
