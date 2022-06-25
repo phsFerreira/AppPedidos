@@ -7,18 +7,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GerenciarCardapio extends AppCompatActivity {
 
     private provaDatabase provaDB;
     private Toolbar toolbar;
+    private Produto prod=new Produto();
 
     private ProdutoAdapter adapter;
     private RecyclerView rvProdutos;
@@ -48,9 +51,14 @@ public class GerenciarCardapio extends AppCompatActivity {
 
             @Override
             public void btExcluirClick(int position, Produto produto) {
-                Toast.makeText(GerenciarCardapio.this, "Clicou", Toast.LENGTH_SHORT).show();
+                prod=provaDB.produtoDAO().findById(position);
+                provaDB.produtoDAO().delete(prod);
+
+                produtos.remove(position);
+                adapter.notifyItemRemoved(position);
             }
         });
+
         rvProdutos.setAdapter(adapter);
 
         toolbar=findViewById(R.id.toolbarTeste);
@@ -81,4 +89,13 @@ public class GerenciarCardapio extends AppCompatActivity {
             }
         return super.onOptionsItemSelected(item);
     }
+
+//    public void excluirProduto(int i, String id){
+//        try {
+//            prod
+//            provaDB.produtoDAO().delete();
+//        }catch (SQLiteException e){
+//            e.printStackTrace();
+//        }
+//    }
 }

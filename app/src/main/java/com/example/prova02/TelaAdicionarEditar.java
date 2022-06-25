@@ -1,10 +1,12 @@
 package com.example.prova02;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,5 +60,12 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
             Intent it=new Intent(this, GerenciarCardapio.class);
             startActivity(it);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent it=new Intent(this, GerenciarCardapio.class);
+        startActivity(it);
+        return true;
     }
 }

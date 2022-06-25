@@ -21,7 +21,7 @@ public interface ProdutoDAO {
     void update(Produto produto);
 
     @Delete
-    void delete(Usuario usuario);
+    void delete(Produto produto);
 
     //QUERIES
 

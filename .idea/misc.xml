@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/drawable/side_nav_bar.xml" value="0.224" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/activity_gerenciar_cardapio.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/activity_tela_adicionar_editar.xml" value="0.36666666666666664" />
@@ -12,7 +13,7 @@
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/content_tela_inicial.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/fragment_fragmento_registrar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/fragment_teste.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/header.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/header.xml" value="0.25" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/item_cardapio.xml" value="0.365625" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/layout/nav_header_tela_inicial.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/menu/actionbar_registrar.xml" value="0.36666666666666664" />
