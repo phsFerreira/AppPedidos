@@ -15,9 +15,8 @@ public class Produto {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @Ignore
     @ColumnInfo(name = "imagem")
-    public Blob imagem;
+    public Bitmap imagem;
 
     @ColumnInfo(name = "nome_produto")
     public String nome;
@@ -27,4 +26,12 @@ public class Produto {
 
     @ColumnInfo(name="porcentagem_desconto")
     public Double desconto;
+
+    public String getNomeProduto(){
+        return nome;
+    }
+
+    public Bitmap getImgProduto(){
+        return imagem;
+    }
 }
