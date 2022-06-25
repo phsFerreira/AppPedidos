@@ -18,11 +18,20 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
     private Button btCadastrar;
     private provaDatabase provaDB;
     private Toolbar toolbar;
+    private Produto prod;
+    private int produto_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adicionar_editar);
+
+        //recebe id passado pelo botao de editar produto
+        Bundle extras=getIntent().getExtras();
+        if(extras!=null)
+            produto_id=extras.getInt("produto_id");
+        else
+            produto_id=-1;
 
         //TOOLBAR
         toolbar=findViewById(R.id.toolbarCadastrar);
@@ -46,16 +55,39 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         String desconto;
         nome=txtNome.getText().toString();
         preco=txtPreco.getText().toString();
+
         desconto=txtDesconto.getText().toString();
 
-        if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty())
-            Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+        if(produto_id==-1){
+            if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty())
+                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+            else{
+                Produto prod=new Produto();
+                prod.nome=nome;
+                prod.preco=  Double.parseDouble(preco);
+                prod.desconto= Double.parseDouble(desconto);
+                provaDB.produtoDAO().insert(prod);
+
+                Intent it=new Intent(this, GerenciarCardapio.class);
+                startActivity(it);
+            }
+        }
         else{
-            Produto prod=new Produto();
+            prod=provaDB.produtoDAO().findById(produto_id);
+
+            txtNome.setText(prod.nome);
+            txtPreco.setText(prod.preco.toString());
+            txtDesconto.setText(prod.preco.toString());
+
+            nome=txtNome.getText().toString();
+            preco=txtPreco.getText().toString();
+            desconto=txtDesconto.getText().toString();
+
             prod.nome=nome;
-            prod.preco=  Double.parseDouble(preco);
-            prod.desconto= Double.parseDouble(desconto);
-            provaDB.produtoDAO().insert(prod);
+            prod.preco=Double.parseDouble(preco);
+            prod.desconto=Double.parseDouble(desconto);
+
+            provaDB.produtoDAO().update(prod);
 
             Intent it=new Intent(this, GerenciarCardapio.class);
             startActivity(it);

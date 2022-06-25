@@ -35,4 +35,8 @@ public class Produto {
     public Bitmap getImgProduto(){
         return imagem;
     }
+
+    public int getId(){
+        return id;
+    }
 }

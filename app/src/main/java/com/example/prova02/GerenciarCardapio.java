@@ -22,6 +22,7 @@ public class GerenciarCardapio extends AppCompatActivity {
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Produto prod=new Produto();
+    private Intent it;
 
     private ProdutoAdapter adapter;
     private RecyclerView rvProdutos;
@@ -47,6 +48,8 @@ public class GerenciarCardapio extends AppCompatActivity {
             @Override
             public void btEditarClick(Produto produto) {
                 Toast.makeText(GerenciarCardapio.this, "Clicou", Toast.LENGTH_SHORT).show();
+
+                editarProduto(produto);
             }
 
             @Override
@@ -56,6 +59,7 @@ public class GerenciarCardapio extends AppCompatActivity {
 
                 produtos.remove(position);
                 adapter.notifyItemRemoved(position);
+                Toast.makeText(GerenciarCardapio.this, "Produto removido com sucesso!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -88,6 +92,12 @@ public class GerenciarCardapio extends AppCompatActivity {
                 break;
             }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void editarProduto(Produto produto){
+        it=new Intent(this, TelaAdicionarEditar.class);
+        it.putExtra("id_produto", produto.getId());
+        startActivity(it);
     }
 
 //    public void excluirProduto(int i, String id){
