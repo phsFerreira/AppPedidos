@@ -156,7 +156,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent it=new Intent(this, GerenciarCardapio.class);
+        Intent it=new Intent(this, TelaHome.class);
         startActivity(it);
         return true;
     }
