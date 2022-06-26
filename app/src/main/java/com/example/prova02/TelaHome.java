@@ -86,9 +86,11 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
             produtos = (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
             prod = getRandomElement(produtos);
             imgProduto.setImageBitmap(prod.imagem);
+            TextView txt = findViewById(R.id.txtPromocao);
+            txt.setText("Em promoção");
         }catch (Exception e){
-            // TextView txt = findViewById(R.id.txtPromocao);
-            // txt.setText("Sem produtos em promoção");
+            TextView txt = findViewById(R.id.txtPromocao);
+            txt.setText("Sem produtos em promoção");
         }
     }
 
