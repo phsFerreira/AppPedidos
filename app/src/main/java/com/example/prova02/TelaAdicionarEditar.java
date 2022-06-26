@@ -73,6 +73,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
             txtDesconto.setText(prod.desconto.toString());
             txtDescricao.setText(prod.descricao.toString());
             btImagem.setImageBitmap(prod.imagem);
+            imagemSelecionada = prod.imagem;
         }
     }
 
@@ -142,7 +143,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                     prod.preco=Double.parseDouble(preco);
                     prod.desconto=Double.parseDouble(desconto);
                     prod.descricao=descricao;
-                    prod.imagem=imagem;
+                    prod.imagem=imagemSelecionada;
 
                     provaDB.produtoDAO().update(prod);
 
