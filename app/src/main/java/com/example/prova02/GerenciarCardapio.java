@@ -47,16 +47,12 @@ public class GerenciarCardapio extends AppCompatActivity {
 
             @Override
             public void btEditarClick(Produto produto) {
-                Toast.makeText(GerenciarCardapio.this, "Clicou", Toast.LENGTH_SHORT).show();
-
-                editarProduto(produto);
+                prod=provaDB.produtoDAO().findById(produto.id);
+                editarProduto(prod);
             }
 
             @Override
             public void btExcluirClick(int position, Produto produto) {
-//                prod=provaDB.produtoDAO().findById(position);
-//                provaDB.produtoDAO().delete(prod);
-
                 prod=provaDB.produtoDAO().findById(produto.id);
                 provaDB.produtoDAO().delete(prod);
 
@@ -104,13 +100,4 @@ public class GerenciarCardapio extends AppCompatActivity {
         it.putExtras(params);
         startActivity(it);
     }
-
-//    public void excluirProduto(int i, String id){
-//        try {
-//            prod
-//            provaDB.produtoDAO().delete();
-//        }catch (SQLiteException e){
-//            e.printStackTrace();
-//        }
-//    }
 }

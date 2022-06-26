@@ -19,7 +19,8 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Produto prod;
-    private String produto_id;
+    private Intent it;
+    private int produto_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +28,13 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_tela_adicionar_editar);
 
         //recebe id passado pelo botao de editar produto
-        Bundle extras=getIntent().getExtras();
-        if(extras!=null)
-            produto_id=String.valueOf(extras.getInt("produto_id"));
-        else
-            produto_id=null;
+        it=this.getIntent();
+        if(it!=null){
+            Bundle params=it.getExtras();
+            if(params!=null){
+                produto_id=params.getInt("id_produto");
+            }
+        }
 
         //TOOLBAR
         toolbar=findViewById(R.id.toolbarCadastrar);
@@ -46,6 +49,14 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         txtDesconto=findViewById(R.id.txtDesconto);
         btCadastrar=findViewById(R.id.btCadastrarProduto);
         btCadastrar.setOnClickListener(this);
+
+        if(produto_id!=0){
+            getSupportActionBar().setTitle("Editar Produto");
+            prod=provaDB.produtoDAO().findById(produto_id);
+            txtNome.setText(prod.nome);
+            txtPreco.setText(prod.preco.toString());
+            txtDesconto.setText(prod.desconto.toString());
+        }
     }
 
     @Override
@@ -64,7 +75,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
 
                 desconto=txtDesconto.getText().toString();
 
-                if(produto_id==null){
+                if(produto_id==0){
                     if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty())
                         Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                     else{
@@ -79,12 +90,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                     }
                 }
                 else{
-                    int id= Integer.parseInt(produto_id);
-                    prod=provaDB.produtoDAO().findById(id);
-
-                    txtNome.setText(prod.nome);
-                    txtPreco.setText(prod.preco.toString());
-                    txtDesconto.setText(prod.preco.toString());
+                    prod=provaDB.produtoDAO().findById(produto_id);
 
                     nome=txtNome.getText().toString();
                     preco=txtPreco.getText().toString();
