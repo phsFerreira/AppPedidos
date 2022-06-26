@@ -5,13 +5,11 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 
 import com.example.prova02.DAOs.ProdutoDAO;
 import com.example.prova02.DAOs.UsuarioDAO;
 
-@Database(entities = {Usuario.class, Produto.class}, version=3)
-@TypeConverters(Conversor.class)
+@Database(entities = {Usuario.class, Produto.class}, version=2)
 public abstract class provaDatabase extends RoomDatabase {
 
     private static final String NOME_DB="prova02-DB";
