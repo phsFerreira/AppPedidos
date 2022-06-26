@@ -54,7 +54,10 @@ public class GerenciarCardapio extends AppCompatActivity {
 
             @Override
             public void btExcluirClick(int position, Produto produto) {
-                prod=provaDB.produtoDAO().findById(position);
+//                prod=provaDB.produtoDAO().findById(position);
+//                provaDB.produtoDAO().delete(prod);
+
+                prod=provaDB.produtoDAO().findById(produto.id);
                 provaDB.produtoDAO().delete(prod);
 
                 produtos.remove(position);
