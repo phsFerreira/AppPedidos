@@ -28,6 +28,9 @@ public class Produto {
     @ColumnInfo(name="porcentagem_desconto")
     public Double desconto;
 
+    @ColumnInfo(name="descricao_produto")
+    public String descricao;
+
     public String getNomeProduto(){
         return nome;
     }
@@ -38,5 +41,9 @@ public class Produto {
 
     public int getId(){
         return id;
+    }
+
+    public String getDescricao(){
+        return descricao;
     }
 }

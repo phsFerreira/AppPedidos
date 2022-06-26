@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.example.prova02.DAOs.ProdutoDAO;
 import com.example.prova02.DAOs.UsuarioDAO;
 
-@Database(entities = {Usuario.class, Produto.class}, version=2)
+@Database(entities = {Usuario.class, Produto.class}, version=3)
 public abstract class provaDatabase extends RoomDatabase {
 
     private static final String NOME_DB="prova02-DB";

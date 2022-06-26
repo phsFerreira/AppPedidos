@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class TelaAdicionarEditar extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText txtNome, txtPreco, txtDesconto;
+    private EditText txtNome, txtPreco, txtDesconto, txtDescricao;
     private Button btCadastrar;
     private provaDatabase provaDB;
     private Toolbar toolbar;
@@ -47,6 +47,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         txtNome=findViewById(R.id.txtNomeProduto);
         txtPreco=findViewById(R.id.txtPreco);
         txtDesconto=findViewById(R.id.txtDesconto);
+        txtDescricao=findViewById(R.id.txtDescricao);
         btCadastrar=findViewById(R.id.btCadastrarProduto);
         btCadastrar.setOnClickListener(this);
 
@@ -56,6 +57,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
             txtNome.setText(prod.nome);
             txtPreco.setText(prod.preco.toString());
             txtDesconto.setText(prod.desconto.toString());
+            txtDescricao.setText(prod.descricao.toString());
         }
     }
 
@@ -70,19 +72,21 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                 String nome;
                 String preco;
                 String desconto;
+                String descricao;
                 nome=txtNome.getText().toString();
                 preco=txtPreco.getText().toString();
-
                 desconto=txtDesconto.getText().toString();
+                descricao=txtDescricao.getText().toString();
 
                 if(produto_id==0){
-                    if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty())
+                    if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty() || descricao.isEmpty())
                         Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                     else{
                         Produto prod=new Produto();
                         prod.nome=nome;
-                        prod.preco=  Double.parseDouble(preco);
-                        prod.desconto= Double.parseDouble(desconto);
+                        prod.preco=Double.parseDouble(preco);
+                        prod.desconto=Double.parseDouble(desconto);
+                        prod.descricao=descricao;
                         provaDB.produtoDAO().insert(prod);
 
                         Intent it=new Intent(this, GerenciarCardapio.class);
@@ -95,10 +99,12 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                     nome=txtNome.getText().toString();
                     preco=txtPreco.getText().toString();
                     desconto=txtDesconto.getText().toString();
+                    descricao=txtDescricao.getText().toString();
 
                     prod.nome=nome;
                     prod.preco=Double.parseDouble(preco);
                     prod.desconto=Double.parseDouble(desconto);
+                    prod.descricao=descricao;
 
                     provaDB.produtoDAO().update(prod);
 
