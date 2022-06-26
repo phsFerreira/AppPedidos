@@ -45,4 +45,7 @@ public class Produto {
     public String getDescricao(){
         return descricao;
     }
+    public double getDesconto(){
+        return desconto;
+    }
 }

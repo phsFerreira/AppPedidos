@@ -36,4 +36,7 @@ public interface ProdutoDAO {
 
     @Query("SELECT * FROM produtos WHERE nome_produto LIKE :nomeProduto LIMIT 1")
     Produto findByName(String nomeProduto);
+
+    @Query("SELECT * FROM produtos WHERE porcentagem_desconto>0")
+    List<Produto> getAllByDesconto();
 }

@@ -19,6 +19,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
     private ArrayList<Produto> listaProdutos;
     private Context context;
     private ItemClickListener listener;
+    private Double desconto;
 
     public ProdutoAdapter(Context c, ArrayList<Produto> lista, ItemClickListener itemClickListener){
         context=c;
@@ -35,10 +36,14 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getNomeProduto().setText(listaProdutos.get(position).getNomeProduto());
+        desconto=listaProdutos.get(position).getDesconto();
         holder.getImgProduto().setImageBitmap(listaProdutos.get(position).getImgProduto());
-
         holder.itemView.setOnClickListener(view -> listener.onItemClick(listaProdutos.get(position)));
+        if(desconto>0){
+            holder.getNomeProduto().setText("*"+listaProdutos.get(position).getNomeProduto());
+        }
+        else
+            holder.getNomeProduto().setText(listaProdutos.get(position).getNomeProduto());
     }
 
     @Override
@@ -83,5 +88,9 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         public ImageView getImgProduto(){
             return imgProduto;
         }
+
+//        public Double getDesconto(){
+//            return desconto;
+//        }
     }
 }

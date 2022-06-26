@@ -27,7 +27,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
     private EditText txtNome, txtPreco, txtDesconto, txtDescricao;
     private Button btCadastrar;
     private ImageButton btImagem;
-    private Bitmap imagemSelecionada;
+    private Bitmap imagemSelecionada, imagem;
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Produto prod;
@@ -72,6 +72,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
             txtPreco.setText(prod.preco.toString());
             txtDesconto.setText(prod.desconto.toString());
             txtDescricao.setText(prod.descricao.toString());
+            btImagem.setImageBitmap(prod.imagem);
         }
     }
 
@@ -135,12 +136,13 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                     preco=txtPreco.getText().toString();
                     desconto=txtDesconto.getText().toString();
                     descricao=txtDescricao.getText().toString();
+                    imagem=btImagem.getDrawingCache();
 
                     prod.nome=nome;
                     prod.preco=Double.parseDouble(preco);
                     prod.desconto=Double.parseDouble(desconto);
                     prod.descricao=descricao;
-                    prod.imagem=imagemSelecionada;
+                    prod.imagem=imagem;
 
                     provaDB.produtoDAO().update(prod);
 

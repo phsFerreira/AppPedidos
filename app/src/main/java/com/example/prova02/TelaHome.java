@@ -1,7 +1,6 @@
 package com.example.prova02;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -9,18 +8,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class TelaHome extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,8 +28,11 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
 
     private TextView tvBemVindo, tvNomeUsuario;
     private Button btSair, btIniciarPedido;
+    private ImageView imgProduto;
     private provaDatabase provaDB;
     private Usuario usr;
+    private Produto prod;
+    private ArrayList<Produto> produtos=new ArrayList<>();
     private Intent it;
     private String nomeUsuario;
 
@@ -61,6 +64,7 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
 
         tvBemVindo=findViewById(R.id.tvBemVindo);
         btIniciarPedido=findViewById(R.id.btIniciarPedido);
+        imgProduto=findViewById(R.id.ivProdutoPromo);
         btIniciarPedido.setOnClickListener(this);
         btSair=navigationView.getHeaderView(0).findViewById(R.id.btSair);
         btSair.setOnClickListener(this);
@@ -79,6 +83,10 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
                 tvNomeUsuario.setText("Logado como: "+usr.nome);
             }
         }
+
+        produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
+        prod=getRandomElement(produtos);
+        imgProduto.setImageBitmap(prod.imagem);
     }
 
     @Override
@@ -129,5 +137,11 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public Produto getRandomElement(List<Produto> lista)
+    {
+        Random rand = new Random();
+        return lista.get(rand.nextInt(lista.size()));
     }
 }

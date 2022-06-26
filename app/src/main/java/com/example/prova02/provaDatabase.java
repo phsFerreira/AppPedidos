@@ -10,7 +10,7 @@ import androidx.room.TypeConverters;
 import com.example.prova02.DAOs.ProdutoDAO;
 import com.example.prova02.DAOs.UsuarioDAO;
 
-@Database(entities = {Usuario.class, Produto.class}, version=3)
+@Database(entities = {Usuario.class, Produto.class}, version=5)
 @TypeConverters(Conversor.class)
 public abstract class provaDatabase extends RoomDatabase {
 
@@ -18,7 +18,6 @@ public abstract class provaDatabase extends RoomDatabase {
     private static volatile provaDatabase instancia;
 
     public provaDatabase(){}
-
 
     //fallbackToDestructiveMigration() deleta o banco pra permitir atualizacoes
 
