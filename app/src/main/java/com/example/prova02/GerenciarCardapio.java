@@ -99,7 +99,9 @@ public class GerenciarCardapio extends AppCompatActivity {
 
     public void editarProduto(Produto produto){
         it=new Intent(this, TelaAdicionarEditar.class);
-        it.putExtra("id_produto", produto.getId());
+        Bundle params=new Bundle();
+        params.putInt("id_produto", produto.getId());
+        it.putExtras(params);
         startActivity(it);
     }
 
