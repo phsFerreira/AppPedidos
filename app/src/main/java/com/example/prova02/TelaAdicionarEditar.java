@@ -11,6 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,10 +27,11 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
     private EditText txtNome, txtPreco, txtDesconto, txtDescricao;
     private Button btCadastrar;
     private ImageButton btImagem;
+    private Bitmap imagemSelecionada;
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Produto prod;
-    private Intent it;
+    private Intent it, intentImagem;
     private int produto_id;
 
     @Override
@@ -79,9 +82,11 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                 public void onActivityResult(ActivityResult result) {
                     if (result != null && result.getResultCode() == RESULT_OK) {
                         if (result.getData() != null) {
-                            Intent intent = result.getData();
-                            Uri uri = intent.getData();
-                            btImagem.setImageURI(intent.getData());
+                            intentImagem=result.getData();
+                            Uri uri=intentImagem.getData();
+                            btImagem.setImageURI(intentImagem.getData());
+                            BitmapDrawable img =(BitmapDrawable) btImagem.getDrawable();
+                            imagemSelecionada = img.getBitmap();
                         }
                     }
                 }
@@ -116,6 +121,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                         prod.preco=Double.parseDouble(preco);
                         prod.desconto=Double.parseDouble(desconto);
                         prod.descricao=descricao;
+                        prod.imagem=imagemSelecionada;
                         provaDB.produtoDAO().insert(prod);
 
                         Intent it=new Intent(this, GerenciarCardapio.class);
@@ -134,6 +140,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                     prod.preco=Double.parseDouble(preco);
                     prod.desconto=Double.parseDouble(desconto);
                     prod.descricao=descricao;
+                    prod.imagem=imagemSelecionada;
 
                     provaDB.produtoDAO().update(prod);
 
