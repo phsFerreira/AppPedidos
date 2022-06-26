@@ -35,7 +35,6 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
     private ArrayList<Produto> produtos=new ArrayList<>();
     private Intent it;
     private String nomeUsuario;
-
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private androidx.appcompat.widget.Toolbar toolbar;
@@ -83,10 +82,14 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
                 tvNomeUsuario.setText("Logado como: "+usr.nome);
             }
         }
-
-        produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
-        prod=getRandomElement(produtos);
-        imgProduto.setImageBitmap(prod.imagem);
+        try {
+            produtos = (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
+            prod = getRandomElement(produtos);
+            imgProduto.setImageBitmap(prod.imagem);
+        }catch (Exception e){
+            // TextView txt = findViewById(R.id.txtPromocao);
+            // txt.setText("Sem produtos em promoção");
+        }
     }
 
     @Override
