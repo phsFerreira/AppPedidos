@@ -1,21 +1,30 @@
 package com.example.prova02;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Instrumentation;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class TelaAdicionarEditar extends AppCompatActivity implements View.OnClickListener {
 
     private EditText txtNome, txtPreco, txtDesconto;
     private Button btCadastrar;
+    private ImageButton btImagem;
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Produto prod;
@@ -48,7 +57,9 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         txtPreco=findViewById(R.id.txtPreco);
         txtDesconto=findViewById(R.id.txtDesconto);
         btCadastrar=findViewById(R.id.btCadastrarProduto);
+        btImagem=findViewById(R.id.btSelecionarImagem);
         btCadastrar.setOnClickListener(this);
+        btImagem.setOnClickListener(this);
 
         if(produto_id!=0){
             getSupportActionBar().setTitle("Editar Produto");
@@ -59,11 +70,29 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         }
     }
 
+    ActivityResultLauncher<Intent> abreGaleria = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result != null && result.getResultCode() == RESULT_OK) {
+                        if (result.getData() != null) {
+                            Intent intent = result.getData();
+                            Uri uri = intent.getData();
+                            btImagem.setImageURI(intent.getData());
+                        }
+                    }
+                }
+            }
+    );
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btSelecionarImagem:
-
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                abreGaleria.launch(intent);
                 break;
 
             case R.id.btCadastrarProduto:
@@ -72,7 +101,6 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                 String desconto;
                 nome=txtNome.getText().toString();
                 preco=txtPreco.getText().toString();
-
                 desconto=txtDesconto.getText().toString();
 
                 if(produto_id==0){
@@ -115,6 +143,4 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
         startActivity(it);
         return true;
     }
-
-
 }

@@ -15,7 +15,6 @@ public class Produto {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @Ignore
     @ColumnInfo(name = "imagem")
     public Bitmap imagem;
 
