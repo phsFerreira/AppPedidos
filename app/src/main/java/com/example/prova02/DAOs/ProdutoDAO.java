@@ -28,10 +28,10 @@ public interface ProdutoDAO {
     @Query("SELECT * FROM produtos")
     List<Produto> getAll();
 
-    @Query("SELECT * FROM produtos WHERE id IN (:fids)")
+    @Query("SELECT * FROM produtos WHERE idProduto IN (:fids)")
     List<Produto> loadAllByIds(int[] fids);
 
-    @Query("SELECT * FROM produtos WHERE id LIKE :idProduto LIMIT 1")
+    @Query("SELECT * FROM produtos WHERE idProduto LIKE :idProduto LIMIT 1")
     Produto findById(int idProduto);
 
     @Query("SELECT * FROM produtos WHERE nome_produto LIKE :nomeProduto LIMIT 1")

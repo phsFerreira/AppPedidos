@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btPopular:
-                Toast.makeText(this, "Produto adicionado!", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(this, "Produto adicionado!", Toast.LENGTH_SHORT).show();
 //                Produto prod=new Produto();
 //                prod.nome="sushi";
 //                prod.preco=Double.parseDouble(String.valueOf(10));
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sushi);
 //                prod.imagem = bitmap;
 //                provaDB.produtoDAO().insert(prod);
-//                break;
+                break;
         }
     }
 

@@ -47,13 +47,13 @@ public class GerenciarCardapio extends AppCompatActivity {
 
             @Override
             public void btEditarClick(Produto produto) {
-                prod=provaDB.produtoDAO().findById(produto.id);
+                prod=provaDB.produtoDAO().findById(produto.idProduto);
                 editarProduto(prod);
             }
 
             @Override
             public void btExcluirClick(int position, Produto produto) {
-                prod=provaDB.produtoDAO().findById(produto.id);
+                prod=provaDB.produtoDAO().findById(produto.idProduto);
                 provaDB.produtoDAO().delete(prod);
 
                 produtos.remove(position);

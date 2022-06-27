@@ -1,29 +1,27 @@
-//package com.example.prova02.DAOs;
-//
-//import androidx.room.Dao;
-//import androidx.room.Delete;
-//import androidx.room.Insert;
-//import androidx.room.Query;
-//import androidx.room.Update;
-//
-//import com.example.prova02.Pedido;
-//
-//import java.util.List;
-//
-//@Dao
-//public interface PedidoDAO {
-//
-//    @Insert
-//    long insert(Pedido pedido);
-//
-//    @Update
-//    void update(Pedido pedido);
-//
-//    @Delete
-//    void delete(Pedido pedido);
-//
-//    //QUERIES
-//
+package com.example.prova02.DAOs;
+
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
+
+import com.example.prova02.Pedido;
+
+@Dao
+public interface PedidoDAO {
+
+    @Insert
+    long insert(Pedido pedido);
+
+    @Update
+    void update(Pedido pedido);
+
+    @Delete
+    void delete(Pedido pedido);
+
+    //QUERIES
+
 //    @Query("SELECT * FROM pedidos")
 //    List<Pedido> getAll();
 //
@@ -35,4 +33,4 @@
 //
 //    @Query("SELECT * FROM pedidos WHERE endereco_entrega LIKE :enderecoEntrega")
 //    List<Pedido> loadAllByEndereco(String enderecoEntrega);
-//}
+}

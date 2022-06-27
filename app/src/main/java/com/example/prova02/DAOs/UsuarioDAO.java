@@ -29,10 +29,10 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM usuarios")
     List<Usuario> getAll();
 
-    @Query("SELECT * FROM usuarios WHERE id IN (:fids)")
+    @Query("SELECT * FROM usuarios WHERE idUsuario IN (:fids)")
     List<Usuario> loadAllByIds(int[] fids);
 
-    @Query("SELECT * FROM usuarios WHERE id LIKE :idUsuario LIMIT 1")
+    @Query("SELECT * FROM usuarios WHERE idUsuario LIKE :idUsuario LIMIT 1")
     Usuario findById(int idUsuario);
 
     @Query("SELECT * FROM usuarios WHERE nome_usuario LIKE :nomeUsuario LIMIT 1")

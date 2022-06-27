@@ -13,7 +13,7 @@ import java.sql.Blob;
 public class Produto {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public int idProduto;
 
     @ColumnInfo(name = "imagem")
     public Bitmap imagem;
@@ -39,7 +39,7 @@ public class Produto {
     }
 
     public int getId(){
-        return id;
+        return idProduto;
     }
 
     public String getDescricao(){

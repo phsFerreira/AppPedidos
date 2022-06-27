@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 public class Usuario {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public int idUsuario;
 
     @ColumnInfo(name="nome")
     public String nome;
