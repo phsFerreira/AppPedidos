@@ -91,6 +91,7 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
         }catch (Exception e){
             TextView txt = findViewById(R.id.txtPromocao);
             txt.setText("Sem produtos em promoção");
+            imgProduto.setImageResource(R.drawable.nao);
         }
     }
 
