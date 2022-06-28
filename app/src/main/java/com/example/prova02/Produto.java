@@ -2,6 +2,7 @@ package com.example.prova02;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -10,11 +11,11 @@ import androidx.room.PrimaryKey;
 
 import java.sql.Blob;
 
-@Entity(tableName = "produtos",
-        foreignKeys = {@ForeignKey( entity = Pedido.class,
-                                    parentColumns = "idPedido",
-                                    childColumns = "idPedido",
-                                    onDelete = ForeignKey.CASCADE)})
+@Entity(tableName = "produtos")
+//        foreignKeys = {@ForeignKey( entity = Pedido.class,
+//                                    parentColumns = "idPedido",
+//                                    childColumns = "idPedido",
+//                                    onDelete = ForeignKey.CASCADE)})
 public class Produto {
 
     @PrimaryKey(autoGenerate = true)
@@ -35,6 +36,7 @@ public class Produto {
     @ColumnInfo(name="descricao_produto")
     public String descricao;
 
+    @Nullable
     @ColumnInfo(name="idPedido")
     public int idPedido;
 

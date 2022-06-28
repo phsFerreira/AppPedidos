@@ -6,11 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -76,14 +80,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btPopular:
                   Toast.makeText(this, "Produto adicionado!", Toast.LENGTH_SHORT).show();
-//                Produto prod=new Produto();
-//                prod.nome="sushi";
-//                prod.preco=Double.parseDouble(String.valueOf(10));
-//                prod.desconto=Double.parseDouble(String.valueOf(15));
-//                prod.descricao="Sushi (すし, 寿司, 鮨) é um prato da culinária japonesa que possui origem numa antiga técnica de conservação da carne de peixe em arroz avinagrado. ";
-//                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sushi);
-//                prod.imagem = bitmap;
-//                provaDB.produtoDAO().insert(prod);
+                Produto prod=new Produto();
+                prod.nome="sushi";
+                prod.preco=Double.parseDouble(String.valueOf(10));
+                prod.desconto=Double.parseDouble(String.valueOf(15));
+                prod.descricao="Sushi (すし, 寿司, 鮨) é um prato da culinária japonesa que possui origem numa antiga técnica de conservação da carne de peixe em arroz avinagrado. ";
+                ImageView imgView = new ImageView(this);
+                imgView.setImageResource(R.drawable.sushi);
+                Bitmap bitmap = ((BitmapDrawable)imgView.getDrawable()).getBitmap();
+                prod.imagem = bitmap;
+                provaDB.produtoDAO().insert(prod);
                 break;
         }
     }
@@ -92,5 +98,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void hideSoftKeyboard(View view){
         InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public Bitmap drawableToBitmap (Drawable drawable) {
+        Bitmap bitmap = null;
+
+        if (drawable instanceof BitmapDrawable) {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            if(bitmapDrawable.getBitmap() != null) {
+                return bitmapDrawable.getBitmap();
+            }
+        }
+
+        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
+        } else {
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        }
+
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
     }
 }

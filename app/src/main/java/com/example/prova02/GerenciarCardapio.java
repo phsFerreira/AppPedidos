@@ -81,9 +81,9 @@ public class GerenciarCardapio extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show();
-                finish();
-                return true;
+                Intent itHome=new Intent(this, TelaHome.class);
+                startActivity(itHome);;
+                break;
 
             case R.id.btAdicionarProduto:
                 Intent it=new Intent(this, TelaAdicionarEditar.class);
