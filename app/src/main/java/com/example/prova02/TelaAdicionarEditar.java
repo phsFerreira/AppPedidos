@@ -86,7 +86,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                         if (result.getData() != null) {
                             intentImagem=result.getData();
                             Uri uri=intentImagem.getData();
-                            btImagem.setImageURI(intentImagem.getData());
+                            btImagem.setImageURI(uri);
                             BitmapDrawable img =(BitmapDrawable) btImagem.getDrawable();
                             imagemSelecionada = img.getBitmap();
                         }

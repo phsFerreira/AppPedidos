@@ -4,12 +4,17 @@ import android.graphics.Bitmap;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.sql.Blob;
 
-@Entity(tableName = "produtos")
+@Entity(tableName = "produtos",
+        foreignKeys = {@ForeignKey( entity = Pedido.class,
+                                    parentColumns = "idPedido",
+                                    childColumns = "idPedido",
+                                    onDelete = ForeignKey.CASCADE)})
 public class Produto {
 
     @PrimaryKey(autoGenerate = true)
@@ -29,6 +34,9 @@ public class Produto {
 
     @ColumnInfo(name="descricao_produto")
     public String descricao;
+
+    @ColumnInfo(name="idPedido")
+    public int idPedido;
 
     public String getNomeProduto(){
         return nome;

@@ -8,6 +8,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.prova02.Usuario;
+import com.example.prova02.UsuarioPedidos;
 //import com.example.prova02.UsuarioPedidos;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM usuarios WHERE nome_usuario LIKE :nomeUsuario LIMIT 1")
     Usuario findByName(String nomeUsuario);
 
-//    @Transaction
-//    @Query("SELECT * FROM usuarios")
-//        public List<UsuarioPedidos> getUsuarioPedidos();
+    @Transaction
+    @Query("SELECT * FROM usuarios")
+    List<UsuarioPedidos> getUsuarioPedidos();
 }

@@ -10,7 +10,7 @@ public class PedidoProdutos {
     public Pedido pedido;
     @Relation(
             parentColumn = "idPedido",
-            entityColumn = "idProduto"
+            entityColumn = "idPedido"
     )
     public List<Produto> produtos;
 }

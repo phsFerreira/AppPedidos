@@ -4,8 +4,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
+import com.example.prova02.PedidoProdutos;
 import com.example.prova02.Produto;
 import com.example.prova02.Usuario;
 
