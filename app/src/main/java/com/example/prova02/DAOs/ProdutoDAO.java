@@ -40,4 +40,7 @@ public interface ProdutoDAO {
 
     @Query("SELECT * FROM produtos WHERE porcentagem_desconto>0")
     List<Produto> getAllByDesconto();
+
+    @Query("SELECT * FROM produtos WHERE porcentagem_desconto==0")
+    List<Produto> getAllBySemDesconto();
 }

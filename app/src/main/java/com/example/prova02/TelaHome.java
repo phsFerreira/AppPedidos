@@ -99,10 +99,12 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btIniciarPedido:
+                it=new Intent(this, TelaPedido.class);
+                startActivity(it);
                 break;
 
             case R.id.btSair:
-                    Intent it=new Intent(this, MainActivity.class);
+                    it=new Intent(this, MainActivity.class);
                     startActivity(it);
                 break;
         }

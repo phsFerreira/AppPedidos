@@ -64,7 +64,7 @@ public class GerenciarCardapio extends AppCompatActivity {
 
         rvProdutos.setAdapter(adapter);
 
-        toolbar=findViewById(R.id.toolbarTeste);
+        toolbar=findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Lista de Produtos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
