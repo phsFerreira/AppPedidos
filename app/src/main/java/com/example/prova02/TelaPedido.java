@@ -27,6 +27,7 @@ public class TelaPedido extends AppCompatActivity {
     private ArrayList<Produto> produtosPromo=new ArrayList<>();
     private ArrayList<Produto> produtos=new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

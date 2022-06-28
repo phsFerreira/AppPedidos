@@ -15,7 +15,7 @@
         tools:targetApi="31">
         <activity
             android:name=".TelaCarrinho"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".TelaPedido"
             android:exported="false" />

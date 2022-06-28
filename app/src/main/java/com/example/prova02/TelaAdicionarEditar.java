@@ -126,8 +126,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                         prod.imagem=imagemSelecionada;
                         provaDB.produtoDAO().insert(prod);
 
-                        Intent it=new Intent(this, GerenciarCardapio.class);
-                        startActivity(it);
+                        finish();
                     }
                 }
                 else{
@@ -147,8 +146,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
 
                     provaDB.produtoDAO().update(prod);
 
-                    Intent it=new Intent(this, GerenciarCardapio.class);
-                    startActivity(it);
+                    finish();
                 }
                 break;
         }
@@ -156,8 +154,11 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent it=new Intent(this, TelaHome.class);
-        startActivity(it);
-        return true;
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
