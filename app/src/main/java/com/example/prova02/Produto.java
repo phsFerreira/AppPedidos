@@ -36,6 +36,10 @@ public class Produto {
         return nome;
     }
 
+    public Double getPrecoProduto(){
+        return preco;
+    }
+
     public Bitmap getImgProduto(){
         return imagem;
     }

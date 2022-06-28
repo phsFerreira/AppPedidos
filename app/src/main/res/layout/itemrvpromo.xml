@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="180dp">
+
+    <TextView
+        android:id="@+id/tvNomeProdPromo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="Produto"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/imgProdutoPromo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        tools:srcCompat="@tools:sample/avatars"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvPrecoProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="4"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="5dp"
+            android:text="Preco"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center_vertical" />
+
+        <ImageButton
+            android:id="@+id/btAddProdutoPromo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/green"
+            app:srcCompat="@drawable/ic_additem" />
+
+    </LinearLayout>
+
+</LinearLayout>
