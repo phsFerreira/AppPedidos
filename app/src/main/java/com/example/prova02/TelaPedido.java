@@ -91,6 +91,10 @@ public class TelaPedido extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.btCarrinho:
+                it=new Intent(this, TelaCarrinho.class);
+                startActivity(it);
+
             case android.R.id.home:
                 finish();
                 return true;
