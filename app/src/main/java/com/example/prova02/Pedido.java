@@ -12,7 +12,6 @@ import androidx.room.PrimaryKey;
                                     childColumns = "idUsuario",
                                     onDelete = ForeignKey.CASCADE)})
 public class Pedido {
-
     @PrimaryKey(autoGenerate = true)
     public int idPedido;
 
@@ -24,5 +23,4 @@ public class Pedido {
 
     @ColumnInfo(name="endereco_entrega")
     public String endereco;
-
 }

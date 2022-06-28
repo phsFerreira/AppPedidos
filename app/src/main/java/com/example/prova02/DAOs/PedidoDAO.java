@@ -8,8 +8,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.prova02.Pedido;
-import com.example.prova02.PedidoProdutos;
-import com.example.prova02.Usuario;
+import com.example.prova02.PedidosProdutosReferencia;
 
 import java.util.List;
 
@@ -32,10 +31,6 @@ public interface PedidoDAO {
 
     @Query("SELECT * FROM pedidos WHERE idPedido IN (:fids)")
     List<Pedido> loadAllByIds(int[] fids);
-
-    @Transaction
-    @Query("SELECT * FROM pedidos")
-    List<PedidoProdutos> getPedidoProdutos();
 
 //    @Query("SELECT * FROM pedidos WHERE id LIKE :idPedido LIMIT 1")
 //    Pedido findById(int idPedido);
