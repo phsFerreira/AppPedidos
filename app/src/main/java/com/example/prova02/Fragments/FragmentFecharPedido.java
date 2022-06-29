@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prova02.CarrinhoAdapter;
@@ -68,17 +69,26 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
         adapter=new CarrinhoAdapter(getActivity(), produtos, new CarrinhoAdapter.ItemClickListener() {
             @Override
             public void onItemClick(Produto produto) {
-
             }
 
             @Override
             public void btAdicionarItemClick(int position, Produto produto) {
-
+                TextView txtQuantidade = view.findViewById(R.id.tvQuantidade);
+                int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
+                quantidade++;
+                txtQuantidade.setText(String.valueOf(quantidade));
             }
 
             @Override
             public void btRemoverItemClick(int position, Produto produto) {
-
+                TextView txtQuantidade = view.findViewById(R.id.tvQuantidade);
+                int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
+                if (quantidade<=0){
+                    txtQuantidade.setText("0");
+                }else {
+                    quantidade--;
+                    txtQuantidade.setText(String.valueOf(quantidade));
+                }
             }
         });
         rvProdutosCarrinho.setAdapter(adapter);
@@ -93,7 +103,17 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btFecharPedido:
-                Toast.makeText(getActivity(), "Teste", Toast.LENGTH_SHORT).show();
+                TextView txtPreco = view.findViewById(R.id.tvPrecoProdSelecionado);
+                TextView txtQuantidade = view.findViewById(R.id.tvQuantidade);
+
+                float preco = Float.parseFloat(txtPreco.getText().toString());
+                int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
+
+                float valorTotal= preco * quantidade;
+
+                TextView txtValorTotal= view.findViewById(R.id.tvValorTotal);
+                txtValorTotal.setText(String.valueOf(valorTotal));
+                break;
         }
     }
 }

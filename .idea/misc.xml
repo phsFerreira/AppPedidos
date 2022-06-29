@@ -22,17 +22,12 @@
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/menu/telahome_menu2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/menu/toolbarcardapio_menu.xml" value="0.365625" />
         <entry key="..\:/Users/Pedro/Documents/College/Semester-5/PMDE/Exercises/Prova02/app/src/main/res/menu/toolbarhome_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/drawable/ic_carrinho.xml" value="0.28" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/drawable/ic_removeritem.xml" value="0.28" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/activity_gerenciar_cardapio.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/activity_tela_adicionar_editar.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/activity_tela_carrinho.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/activity_tela_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/activity_tela_pedido.xml" value="0.33" />
-        <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/activity_tela_registrar.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/fragment_fechar_pedido.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/item_cardapio.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/item_carrinho.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/item_rvprodutos.xml" value="0.365625" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/layout/itemrvpromo.xml" value="0.365625" />
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/menu/toolbarcardapio_menu.xml" value="0.36666666666666664" />
@@ -40,13 +35,25 @@
         <entry key="..\:/Users/Pedro/Documents/GitHub/AppPedidos/app/src/main/res/menu/toolbarpedido_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/enric/Documents/PDM-Atividades/AppPedidos/app/src/main/res/layout/activity_main.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/enric/Documents/PDM-Atividades/AppPedidos/app/src/main/res/layout/nav_header_tela_inicial.xml" value="0.16032608695652173" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/drawable/ic_additem.xml" value="0.2125" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/drawable/ic_adicionar.xml" value="0.2125" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/drawable/ic_carrinho.xml" value="0.2125" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/drawable/ic_deletar.xml" value="0.2125" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/drawable/ic_editar.xml" value="0.2125" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/drawable/ic_removeritem.xml" value="0.2125" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_gerenciar_cardapio.xml" value="0.30833333333333335" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_tela_adicionar_editar.xml" value="0.33" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_tela_carrinho.xml" value="0.19479166666666667" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_tela_home.xml" value="0.30833333333333335" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_tela_pedido.xml" value="0.19479166666666667" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/activity_tela_registrar.xml" value="0.33" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/fragment_fechar_pedido.xml" value="0.19479166666666667" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/header.xml" value="0.25" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/item_cardapio.xml" value="0.33" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/item_carrinho.xml" value="0.33" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/item_rvprodutos.xml" value="0.31657608695652173" />
+        <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/itemrvpromo.xml" value="0.31657608695652173" />
         <entry key="..\:/prova2 PDM/AppPedidos/app/src/main/res/layout/nav_header_tela_inicial.xml" value="0.5" />
       </map>
     </option>

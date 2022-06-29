@@ -21,6 +21,9 @@ public class Pedido {
     @ColumnInfo(name="metodo_pagamento")
     public String pagamento;
 
+    @ColumnInfo(name="valor-pedido")
+    public String valor;
+
     @ColumnInfo(name="endereco_entrega")
     public String endereco;
 }
