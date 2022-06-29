@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Prova02"
         tools:targetApi="27">
         <activity
+            android:name=".TelaHistorico"
+            android:exported="false" />
+        <activity
             android:name=".ProdutoDetalhes"
             android:exported="false" />
         <activity

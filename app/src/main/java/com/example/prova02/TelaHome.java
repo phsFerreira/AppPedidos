@@ -130,7 +130,8 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.nav_historico:
-                Toast.makeText(this, "Historico", Toast.LENGTH_SHORT).show();
+                it=new Intent(this, TelaHistorico.class);
+                startActivity(it);
                 break;
 
             case R.id.nav_cardapio:
