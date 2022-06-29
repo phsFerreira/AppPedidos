@@ -85,17 +85,13 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
                 itIniciarPedido.putExtras(params);
             }
         }
-        try {
-            produtos = (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
-            prod = getRandomElement(produtos);
-            imgProduto.setImageBitmap(prod.imagem);
-            TextView txt = findViewById(R.id.txtPromocao);
-            txt.setText("Em promoção");
-        }catch (Exception e){
-            TextView txt = findViewById(R.id.txtPromocao);
-            txt.setText("Sem produtos em promoção");
-            imgProduto.setImageResource(R.drawable.nao);
-        }
+        setPromocao();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setPromocao();
     }
 
     @Override
@@ -153,5 +149,19 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
     {
         Random rand = new Random();
         return lista.get(rand.nextInt(lista.size()));
+    }
+
+    public void setPromocao(){
+        try {
+            produtos = (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
+            prod = getRandomElement(produtos);
+            imgProduto.setImageBitmap(prod.imagem);
+            TextView txt = findViewById(R.id.txtPromocao);
+            txt.setText("Em promoção");
+        }catch (Exception e){
+            TextView txt = findViewById(R.id.txtPromocao);
+            txt.setText("Sem produtos em promoção");
+            imgProduto.setImageResource(R.drawable.nao);
+        }
     }
 }
