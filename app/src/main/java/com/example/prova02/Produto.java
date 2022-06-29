@@ -9,10 +9,11 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
 @Entity(tableName = "produtos")
-public class Produto {
+public class Produto implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     public int idProduto;

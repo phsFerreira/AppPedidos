@@ -52,10 +52,16 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //BANCO
         provaDB=provaDatabase.getInstance(getActivity().getApplicationContext());
 
+        //RECEBENDO LISTA PASSADA POR PARAMETRO PELA ACTIVITY
+        if(getArguments()!=null){
+            produtos= (ArrayList<Produto>) getArguments().getSerializable("lista");
+        }
+
         //Recycler view dos produtos do carrinho
-        produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
+        //produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
         rvProdutosCarrinho=(RecyclerView) view.findViewById(R.id.rvCarrinho);
         rvProdutosCarrinho.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 

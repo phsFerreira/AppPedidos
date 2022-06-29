@@ -10,11 +10,16 @@ import android.view.MenuItem;
 
 import com.example.prova02.Fragments.FragmentFecharPedido;
 
+import java.util.ArrayList;
+
 public class TelaCarrinho extends AppCompatActivity {
 
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Produto prod=new Produto();
+    private Intent it;
+    private Bundle params;
+    private ArrayList<Produto> produtos=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,23 @@ public class TelaCarrinho extends AppCompatActivity {
         getSupportActionBar().setTitle("Carrinho");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer, FragmentFecharPedido.class, null).commit();
+        it=this.getIntent();
+        if(it!=null){
+            params=it.getExtras();
+            if(params!=null){
+                ArrayList<Integer> produtosSelecionados=(ArrayList<Integer>) params.getSerializable("lista");
+
+                for(int i=1;i<=produtosSelecionados.size();i++){
+                    prod=provaDB.produtoDAO().findById(i);
+                    produtos.add(prod);
+                }
+
+                params.putSerializable("lista", produtos);
+            }
+        }
+
+        //FRAGMENT
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer, FragmentFecharPedido.class, params).commit();
     }
 
     @Override

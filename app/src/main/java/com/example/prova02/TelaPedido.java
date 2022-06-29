@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TelaPedido extends AppCompatActivity {
@@ -27,6 +28,8 @@ public class TelaPedido extends AppCompatActivity {
     private ArrayList<Produto> produtosPromo=new ArrayList<>();
     private ArrayList<Produto> produtos=new ArrayList<>();
 
+    private ArrayList<Integer> produtosSelecionados=new ArrayList<Integer>();
+    private Produto prod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +51,14 @@ public class TelaPedido extends AppCompatActivity {
 
             @Override
             public void btAdicionarRemoverClick(int position, Produto produto) {
-                Toast.makeText(TelaPedido.this, "teste", Toast.LENGTH_SHORT).show();
+                prod=produto;
+                int id=prod.idProduto;
+                produtosSelecionados.add(id);
             }
         });
         rvProdutosPromo.setAdapter(adapter);
 
-        //recicler view dos produtos sem desconto
+        //recycler view dos produtos sem desconto
         produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAllBySemDesconto();
         rvProdutos=(RecyclerView) findViewById(R.id.rvItems);
         rvProdutos.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -66,7 +71,9 @@ public class TelaPedido extends AppCompatActivity {
 
             @Override
             public void btAdicionarItemClick(int position, Produto produto) {
-
+                prod=produto;
+                int id=prod.idProduto;
+                produtosSelecionados.add(id);
             }
 
             @Override
@@ -94,7 +101,9 @@ public class TelaPedido extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.btCarrinho:
                 it=new Intent(this, TelaCarrinho.class);
+                it.putExtra("lista", (Serializable) produtosSelecionados);
                 startActivity(it);
+                break;
 
             case android.R.id.home:
                 finish();
