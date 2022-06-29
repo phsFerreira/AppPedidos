@@ -20,7 +20,7 @@
             tools:srcCompat="@tools:sample/avatars"/>
 
         <TextView
-            android:id="@+id/mgProdutoSelecionado"
+            android:id="@+id/tvNomeProdSelecionado"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -30,7 +30,7 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/tvPreco"
+            android:id="@+id/tvPrecoProdSelecionado"
             android:layout_width="62dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

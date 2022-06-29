@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.prova02.Fragments.FragmentFecharPedido;
+
 public class TelaCarrinho extends AppCompatActivity {
 
     private provaDatabase provaDB;
@@ -26,6 +28,8 @@ public class TelaCarrinho extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Carrinho");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer, FragmentFecharPedido.class, null).commit();
     }
 
     @Override
