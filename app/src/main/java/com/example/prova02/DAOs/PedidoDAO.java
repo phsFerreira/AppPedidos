@@ -32,8 +32,8 @@ public interface PedidoDAO {
     @Query("SELECT * FROM pedidos WHERE idPedido IN (:fids)")
     List<Pedido> loadAllByIds(int[] fids);
 
-//    @Query("SELECT * FROM pedidos WHERE id LIKE :idPedido LIMIT 1")
-//    Pedido findById(int idPedido);
+    @Query("SELECT * FROM pedidos WHERE idUsuario LIKE :idUsr LIMIT 1")
+    Pedido findById(int idUsr);
 //
 //    @Query("SELECT * FROM pedidos WHERE endereco_entrega LIKE :enderecoEntrega")
 //    List<Pedido> loadAllByEndereco(String enderecoEntrega);

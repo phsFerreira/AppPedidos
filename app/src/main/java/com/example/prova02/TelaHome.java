@@ -81,7 +81,7 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
                 tvNomeUsuario=navigationView.getHeaderView(0).findViewById(R.id.tvNomeUsuario);
                 tvNomeUsuario.setText("Logado como: "+usr.nome);
 
-                itIniciarPedido =new Intent(this, TelaPedido.class);
+                itIniciarPedido=new Intent(this, TelaPedido.class);
                 itIniciarPedido.putExtras(params);
             }
         }

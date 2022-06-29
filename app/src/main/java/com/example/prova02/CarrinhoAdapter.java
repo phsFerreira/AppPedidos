@@ -20,6 +20,7 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
     private Context context;
     private ItemClickListener listener;
     private Double valorPedido;
+    //private int quantidade;
 
     public CarrinhoAdapter(Context c, ArrayList<Produto> lista, ItemClickListener itemClickListener){
         context=c;
@@ -39,6 +40,8 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
         holder.getImgProduto().setImageBitmap(listaProdutos.get(position).getImgProduto());
         holder.getNomeProduto().setText(listaProdutos.get(position).getNomeProduto());
         holder.getPrecoProduto().setText(listaProdutos.get(position).getPrecoProduto().toString());
+        //holder.getQuantidadeProduto().setText(listaProdutos.get(position));
+        //holder.getQuantidadeProduto().setText();
     }
 
     @Override
@@ -57,6 +60,7 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
         private final ImageView imgProduto;
         private final TextView nomeProduto;
         private final TextView precoProduto;
+        private final TextView quantidadeProduto;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,6 +68,7 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
             imgProduto=itemView.findViewById(R.id.imgProdutoSelecionado);
             nomeProduto=itemView.findViewById(R.id.tvNomeProdSelecionado);
             precoProduto=itemView.findViewById(R.id.tvPrecoProdSelecionado);
+            quantidadeProduto=itemView.findViewById(R.id.tvQuantidade);
             ImageButton btAdicionarItem=itemView.findViewById(R.id.btMaisProduto);
             ImageButton btRemoverItem=itemView.findViewById(R.id.btMenosProduto);
 
@@ -88,6 +93,10 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
 
         public TextView getPrecoProduto() {
             return precoProduto;
+        }
+
+        public TextView getQuantidadeProduto(){
+            return quantidadeProduto;
         }
     }
 }

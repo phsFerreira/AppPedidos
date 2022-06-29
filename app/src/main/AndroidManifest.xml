@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prova02"
-        tools:targetApi="31">
+        tools:targetApi="27">
         <activity
             android:name=".ProdutoDetalhes"
             android:exported="false" />

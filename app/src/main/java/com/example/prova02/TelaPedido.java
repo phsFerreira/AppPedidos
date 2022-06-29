@@ -21,6 +21,7 @@ public class TelaPedido extends AppCompatActivity {
     private provaDatabase provaDB;
     private Toolbar toolbar;
     private Intent it;
+    private Bundle params;
 
     private ProdutoPromoAdapter adapter;
     private ProdutosAdapter adapter2;
@@ -37,6 +38,9 @@ public class TelaPedido extends AppCompatActivity {
         setContentView(R.layout.activity_tela_pedido);
 
         provaDB=provaDatabase.getInstance(getApplicationContext());
+
+        it=this.getIntent();
+        params=it.getExtras();
 
         //Recycler view dos produtos em promocao
         produtosPromo= (ArrayList<Produto>) provaDB.produtoDAO().getAllByDesconto();
@@ -102,6 +106,7 @@ public class TelaPedido extends AppCompatActivity {
             case R.id.btCarrinho:
                 it=new Intent(this, TelaCarrinho.class);
                 it.putExtra("lista", (Serializable) produtosSelecionados);
+                it.putExtras(params);
                 startActivity(it);
                 break;
 

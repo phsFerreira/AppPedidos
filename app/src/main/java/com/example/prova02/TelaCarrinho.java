@@ -20,6 +20,7 @@ public class TelaCarrinho extends AppCompatActivity {
     private Intent it;
     private Bundle params;
     private ArrayList<Produto> produtos=new ArrayList<>();
+    private String nomeUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +40,12 @@ public class TelaCarrinho extends AppCompatActivity {
             params=it.getExtras();
             if(params!=null){
                 ArrayList<Integer> produtosSelecionados=(ArrayList<Integer>) params.getSerializable("lista");
+                nomeUsuario=params.getString("nomeUsuario");
 
                 for(int i=1;i<=produtosSelecionados.size();i++){
                     prod=provaDB.produtoDAO().findById(i);
                     produtos.add(prod);
                 }
-
                 params.putSerializable("lista", produtos);
             }
         }

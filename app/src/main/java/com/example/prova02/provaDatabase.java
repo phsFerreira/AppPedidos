@@ -12,7 +12,7 @@ import com.example.prova02.DAOs.PedidoProdutoDAO;
 import com.example.prova02.DAOs.ProdutoDAO;
 import com.example.prova02.DAOs.UsuarioDAO;
 
-@Database(entities = {Usuario.class, Produto.class, Pedido.class, PedidosProdutosReferencia.class}, version=20)
+@Database(entities = {Usuario.class, Produto.class, Pedido.class, PedidosProdutosReferencia.class}, version=24)
 @TypeConverters(Conversor.class)
 public abstract class provaDatabase extends RoomDatabase {
 

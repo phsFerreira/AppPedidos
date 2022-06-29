@@ -13,14 +13,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prova02.CarrinhoAdapter;
+import com.example.prova02.Pedido;
+import com.example.prova02.PedidosProdutosReferencia;
 import com.example.prova02.Produto;
 import com.example.prova02.R;
+import com.example.prova02.Usuario;
 import com.example.prova02.provaDatabase;
 
 import java.util.ArrayList;
@@ -30,12 +34,16 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
     Button btFecharPedido;
     provaDatabase provaDB;
     TextView tvPreco, tvQuantidade, tvValorTotal;
+    EditText txtEndereco;
     RadioGroup rgPagamento;
-    String metodoPagamento;
+    String metodoPagamento, nomeUsuario;
     View viewCarrinho;
+    float valorTotal;
     CarrinhoAdapter adapter;
     RecyclerView rvProdutosCarrinho;
     ArrayList<Produto> produtos=new ArrayList<>();
+    Pedido pedido;
+    Usuario usr;
 
     public FragmentFecharPedido() {
         // Required empty public constructor
@@ -64,6 +72,7 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
         tvQuantidade=view.findViewById(R.id.tvQuantidade);
         tvPreco=view.findViewById(R.id.tvPrecoProdSelecionado);
         tvValorTotal=view.findViewById(R.id.tvValorTotal);
+        //txtEndereco=view.findViewById(R.id.txtEndereco);
         rgPagamento=(RadioGroup) view.findViewById(R.id.radioGroup);
         rgPagamento.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -76,6 +85,8 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
         //RECEBENDO LISTA PASSADA POR PARAMETRO PELA ACTIVITY
         if(getArguments()!=null){
             produtos= (ArrayList<Produto>) getArguments().getSerializable("lista");
+            nomeUsuario=getArguments().getString("nomeUsuario");
+            usr=provaDB.usuarioDAO().findByName(nomeUsuario);
         }
 
         //Recycler view dos produtos do carrinho
@@ -95,6 +106,17 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
                 int quantidade = Integer.parseInt(tvQuantidade.getText().toString());
                 quantidade++;
                 tvQuantidade.setText(String.valueOf(quantidade));
+
+                TextView txtPreco = view.findViewById(R.id.tvPrecoProdSelecionado);
+                TextView txtQuantidade = view.findViewById(R.id.tvQuantidade);
+
+                float preco = Float.parseFloat(txtPreco.getText().toString());
+                //int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
+
+                valorTotal= preco * quantidade;
+
+                TextView txtValorTotal= viewCarrinho.findViewById(R.id.tvValorTotal);
+                txtValorTotal.setText("R$ "+ String.valueOf(valorTotal));
 
             }
 
@@ -116,24 +138,37 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
 
         btFecharPedido=view.findViewById(R.id.btFecharPedido);
         btFecharPedido.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btFecharPedido:
-                TextView txtPreco = viewCarrinho.findViewById(R.id.tvPrecoProdSelecionado);
-                TextView txtQuantidade = viewCarrinho.findViewById(R.id.tvQuantidade);
 
-                float preco = Float.parseFloat(txtPreco.getText().toString());
-                int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
+                //TextView endereco=viewCarrinho.findViewById(R.id.txtEndereco);
 
-                float valorTotal= preco * quantidade;
+                String caralho="aaaaa";
 
-                TextView txtValorTotal= viewCarrinho.findViewById(R.id.tvValorTotal);
-                txtValorTotal.setText("R$ "+ String.valueOf(valorTotal));
-                Toast.makeText(getActivity(), "pagamento: "+metodoPagamento, Toast.LENGTH_SHORT).show();
+                pedido=new Pedido();
+
+                pedido.endereco="caralho";
+                pedido.pagamento="dinheiro";
+                pedido.valor=String.valueOf(valorTotal);
+                pedido.idUsuario=usr.idUsuario;
+
+                provaDB.pedidoDAO().insert(pedido);
+                pedido=provaDB.pedidoDAO().findById(usr.idUsuario);
+
+                PedidosProdutosReferencia pedidoFinal=new PedidosProdutosReferencia();
+
+                for(int i=0;i<=produtos.size();i++){
+                    pedidoFinal.idPedido=pedido.idPedido;
+                    Produto prod=produtos.get(i);
+                    pedidoFinal.idProduto=prod.idProduto;
+                    provaDB.pedidoprodutoDAO().insert(pedidoFinal);
+                }
+
+                Toast.makeText(getActivity(), "inseriu caralho", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
