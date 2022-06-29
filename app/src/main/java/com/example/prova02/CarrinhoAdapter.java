@@ -5,6 +5,7 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,6 +72,12 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
             quantidadeProduto=itemView.findViewById(R.id.tvQuantidade);
             ImageButton btAdicionarItem=itemView.findViewById(R.id.btMaisProduto);
             ImageButton btRemoverItem=itemView.findViewById(R.id.btMenosProduto);
+            RecyclerView rvProdutos=itemView.findViewById(R.id.rvItemsPromo);
+
+//            rvProdutos.setOnClickListener(view ->{
+//                int position=getAdapterPosition();
+//                listener.onItemClick(position, listaProdutos.get(position));
+//            });
 
             btAdicionarItem.setOnClickListener(view -> {
                 int position=getAdapterPosition();

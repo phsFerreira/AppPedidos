@@ -49,7 +49,7 @@ public class ProdutosAdapter extends RecyclerView.Adapter<ProdutosAdapter.ViewHo
     }
 
     public interface ItemClickListener{
-        void onItemClick(Produto produto);
+        void onItemClick(int position, Produto produto);
         void btAdicionarItemClick(int position, Produto produto);
         void btRemoverItemCLick(int position, Produto produto);
     }
@@ -68,6 +68,11 @@ public class ProdutosAdapter extends RecyclerView.Adapter<ProdutosAdapter.ViewHo
             precoProduto=itemView.findViewById(R.id.tvPrecoProdutoRv);
             ImageButton btAdicionarItem=itemView.findViewById(R.id.btAddProduto);
             ImageButton btRemoverItem=itemView.findViewById(R.id.btRemoverProduto);
+
+            itemView.setOnClickListener(view ->{
+                int position=getAdapterPosition();
+                listener.onItemClick(position, listaProdutos.get(position));
+            });
 
             btAdicionarItem.setOnClickListener(view -> {
                 int position=getAdapterPosition();

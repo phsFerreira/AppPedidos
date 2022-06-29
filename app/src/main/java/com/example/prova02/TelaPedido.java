@@ -48,15 +48,24 @@ public class TelaPedido extends AppCompatActivity {
         rvProdutosPromo.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         adapter=new ProdutoPromoAdapter(this, produtosPromo, new ProdutoPromoAdapter.ItemClickListener() {
+
             @Override
-            public void onItemClick(Produto produto) {
-                Toast.makeText(TelaPedido.this, "teste", Toast.LENGTH_SHORT).show();
+            public void onItemClick(int position, Produto produto) {
+                prod=produtosPromo.get(position);
+                int id=prod.idProduto;
+
+                it=new Intent(TelaPedido.this, ProdutoDetalhes.class);
+
+                params.putInt("id_produto", id);
+                it.putExtras(params);
+                startActivity(it);
             }
 
             @Override
             public void btAdicionarRemoverClick(int position, Produto produto) {
-                prod=produto;
+                prod=produtosPromo.get(position);
                 int id=prod.idProduto;
+
                 produtosSelecionados.add(id);
             }
         });
@@ -68,21 +77,56 @@ public class TelaPedido extends AppCompatActivity {
         rvProdutos.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         adapter2=new ProdutosAdapter(this, produtos, new ProdutosAdapter.ItemClickListener() {
-            @Override
-            public void onItemClick(Produto produto) {
 
+            @Override
+            public void onItemClick(int position, Produto produto) {
+                prod=produtos.get(position);
+                int id=prod.idProduto;
+
+                it=new Intent(TelaPedido.this, ProdutoDetalhes.class);
+
+                params.putInt("id_produto", id);
+                it.putExtras(params);
+                startActivity(it);
             }
 
             @Override
             public void btAdicionarItemClick(int position, Produto produto) {
-                prod=produto;
+                prod=produtos.get(position);
                 int id=prod.idProduto;
-                produtosSelecionados.add(id);
+
+//                for(int i=1;i<=produtosSelecionados.size();i++){
+//                    if(id==produtosSelecionados.get(i)){
+//                        Toast.makeText(TelaPedido.this, "Esse produto já está no carrinho.", Toast.LENGTH_SHORT).show();
+//                    }
+//                    else{
+//                        produtosSelecionados.add(id);
+//                        Toast.makeText(TelaPedido.this, "Produto adicionado ao carrinho!", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                prod=produtos.get(position);
+//                int id=prod.idProduto;
+
+                for(int i=1;i<=produtosSelecionados.size();i++){
+                    id=produtosSelecionados.get(i);
+                    if(id==prod.idProduto)
+                        Toast.makeText(TelaPedido.this, "Produto já está no carrinho.", Toast.LENGTH_SHORT).show();
+                    else
+                        produtosSelecionados.add(prod.idProduto);
+                    }
             }
 
             @Override
             public void btRemoverItemCLick(int position, Produto produto) {
+                prod=produto;
+                int id=prod.idProduto;
 
+                if(produtosSelecionados.size()>0){
+                    produtosSelecionados.remove(position);
+                    Toast.makeText(TelaPedido.this, "Produto removido do carrinho.", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(TelaPedido.this, "O carrinho está vazio.", Toast.LENGTH_SHORT).show();
             }
         });
         rvProdutos.setAdapter(adapter2);
