@@ -35,6 +35,15 @@ public class GerenciarCardapio extends AppCompatActivity {
 
         provaDB=provaDatabase.getInstance(getApplicationContext());
 
+        toolbar=findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Lista de Produtos");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         produtos= (ArrayList<Produto>) provaDB.produtoDAO().getAll();
         rvProdutos=(RecyclerView) findViewById(R.id.rvLista);
         rvProdutos.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -63,11 +72,6 @@ public class GerenciarCardapio extends AppCompatActivity {
         });
 
         rvProdutos.setAdapter(adapter);
-
-        toolbar=findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Lista de Produtos");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

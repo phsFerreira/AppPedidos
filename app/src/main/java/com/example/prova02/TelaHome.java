@@ -33,7 +33,7 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
     private Usuario usr;
     private Produto prod;
     private ArrayList<Produto> produtos=new ArrayList<>();
-    private Intent it;
+    private Intent it, itIniciarPedido;
     private String nomeUsuario;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -80,6 +80,9 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
                 //seta o nome completo do usuario dentro do nav_drawer
                 tvNomeUsuario=navigationView.getHeaderView(0).findViewById(R.id.tvNomeUsuario);
                 tvNomeUsuario.setText("Logado como: "+usr.nome);
+
+                itIniciarPedido =new Intent(this, TelaPedido.class);
+                itIniciarPedido.putExtras(params);
             }
         }
         try {
@@ -99,8 +102,7 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btIniciarPedido:
-                it=new Intent(this, TelaPedido.class);
-                startActivity(it);
+                startActivity(itIniciarPedido);
                 break;
 
             case R.id.btSair:
@@ -128,7 +130,7 @@ public class TelaHome extends AppCompatActivity implements View.OnClickListener,
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_pedido:
-                Toast.makeText(this, "Novo Pedido", Toast.LENGTH_SHORT).show();
+                startActivity(itIniciarPedido);
                 break;
 
             case R.id.nav_historico:

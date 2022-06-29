@@ -1,7 +1,6 @@
 package com.example.prova02;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
