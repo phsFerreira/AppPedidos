@@ -92,28 +92,10 @@ public class TelaPedido extends AppCompatActivity {
 
             @Override
             public void btAdicionarItemClick(int position, Produto produto) {
-                prod=produtos.get(position);
+                prod=produtosPromo.get(position);
                 int id=prod.idProduto;
 
-//                for(int i=1;i<=produtosSelecionados.size();i++){
-//                    if(id==produtosSelecionados.get(i)){
-//                        Toast.makeText(TelaPedido.this, "Esse produto já está no carrinho.", Toast.LENGTH_SHORT).show();
-//                    }
-//                    else{
-//                        produtosSelecionados.add(id);
-//                        Toast.makeText(TelaPedido.this, "Produto adicionado ao carrinho!", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                prod=produtos.get(position);
-//                int id=prod.idProduto;
-
-                for(int i=1;i<=produtosSelecionados.size();i++){
-                    id=produtosSelecionados.get(i);
-                    if(id==prod.idProduto)
-                        Toast.makeText(TelaPedido.this, "Produto já está no carrinho.", Toast.LENGTH_SHORT).show();
-                    else
-                        produtosSelecionados.add(prod.idProduto);
-                    }
+                produtosSelecionados.add(id);
             }
 
             @Override

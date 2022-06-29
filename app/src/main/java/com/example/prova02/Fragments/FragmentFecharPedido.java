@@ -151,6 +151,7 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
                 params.putString("valor total", String.valueOf(valorTotal));
 
                 Toast.makeText(getActivity(), "Pedido Realizado com sucesso\nPagamento: " +metodoPagamento+ "\nEndereco: "+endereco+"\nValor: "+valorTotal , Toast.LENGTH_LONG).show();
+
 //                getParentFragmentManager()
 //                        .beginTransaction()
 //                        .replace(R.id.fragContainer, FragmentExibirPedido.class, params)

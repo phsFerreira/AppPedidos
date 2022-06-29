@@ -35,8 +35,8 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.ViewHolder
     public void onBindViewHolder(@NonNull PedidoAdapter.ViewHolder holder, int position) {
         holder.getNumeroPedido().setText(String.valueOf(listaPedidos.get(position).idPedido));
         holder.getMetodopagamentoPedido().setText(listaPedidos.get(position).pagamento);
-        holder.getPrecoPedido().setText(String.valueOf(listaPedidos.get(position).valor));
-
+        holder.getPrecoPedido().setText("R$ " + String.valueOf(listaPedidos.get(position).valor));
+        holder.getEndereco().setText(listaPedidos.get(position).endereco);
     }
 
     @Override
@@ -50,6 +50,7 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.ViewHolder
         private final TextView numeroPedido;
         private final TextView metodopagamentoPedido;
         private final TextView precoPedido;
+        private final TextView endereco;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +58,7 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.ViewHolder
             numeroPedido = itemView.findViewById(R.id.tvNumeoPedido);
             metodopagamentoPedido = itemView.findViewById(R.id.tvMetodoPagamentoPedido);
             precoPedido = itemView.findViewById(R.id.tvPrecoPedido);
+            endereco = itemView.findViewById(R.id.tvEnderecoPedido);
 
         }
 
@@ -64,8 +66,10 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.ViewHolder
 
         public TextView getMetodopagamentoPedido() {return metodopagamentoPedido;}
 
-        public TextView getPrecoPedido() {return precoPedido;
-        }
-    }
+        public TextView getPrecoPedido() {return precoPedido;}
 
+        public TextView getEndereco() {return endereco;}
+
+
+    }
 }
