@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +20,6 @@ import android.widget.Toast;
 
 import com.example.prova02.CarrinhoAdapter;
 import com.example.prova02.Pedido;
-import com.example.prova02.PedidosProdutosReferencia;
 import com.example.prova02.Produto;
 import com.example.prova02.R;
 import com.example.prova02.Usuario;
@@ -106,18 +104,7 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
                 int quantidade = Integer.parseInt(tvQuantidade.getText().toString());
                 quantidade++;
                 tvQuantidade.setText(String.valueOf(quantidade));
-
-                TextView txtPreco = view.findViewById(R.id.tvPrecoProdSelecionado);
-                TextView txtQuantidade = view.findViewById(R.id.tvQuantidade);
-
-                float preco = Float.parseFloat(txtPreco.getText().toString());
-                //int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
-
-                valorTotal= preco * quantidade;
-
-                TextView txtValorTotal= viewCarrinho.findViewById(R.id.tvValorTotal);
-                txtValorTotal.setText("R$ "+ String.valueOf(valorTotal));
-
+                atualizaValorTotal(view);
             }
 
             @Override
@@ -131,6 +118,7 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
                     quantidade--;
                     tvQuantidade.setText(String.valueOf(quantidade));
                 }
+                atualizaValorTotal(view);
             }
         });
         rvProdutosCarrinho.setAdapter(adapter);
@@ -145,31 +133,41 @@ public class FragmentFecharPedido extends Fragment implements View.OnClickListen
         switch (view.getId()){
             case R.id.btFecharPedido:
 
-                //TextView endereco=viewCarrinho.findViewById(R.id.txtEndereco);
-
-                String caralho="aaaaa";
-
+                TextView tvEndereco=viewCarrinho.findViewById(R.id.txtEndereco);
+                String endereco = tvEndereco.getText().toString();
                 pedido=new Pedido();
 
-                pedido.endereco="caralho";
-                pedido.pagamento="dinheiro";
+                pedido.endereco=endereco;
+                pedido.pagamento=metodoPagamento;
                 pedido.valor=String.valueOf(valorTotal);
                 pedido.idUsuario=usr.idUsuario;
 
                 provaDB.pedidoDAO().insert(pedido);
                 pedido=provaDB.pedidoDAO().findById(usr.idUsuario);
 
-                PedidosProdutosReferencia pedidoFinal=new PedidosProdutosReferencia();
+                Bundle params = new Bundle();
+                params.putString("metodo pagamento", metodoPagamento);
+                params.putString("endereco", endereco);
+                params.putString("valor total", String.valueOf(valorTotal));
 
-                for(int i=0;i<=produtos.size();i++){
-                    pedidoFinal.idPedido=pedido.idPedido;
-                    Produto prod=produtos.get(i);
-                    pedidoFinal.idProduto=prod.idProduto;
-                    provaDB.pedidoprodutoDAO().insert(pedidoFinal);
-                }
-
-                Toast.makeText(getActivity(), "inseriu caralho", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Pedido Realizado com sucesso\nPagamento: " +metodoPagamento+ "\nEndereco: "+endereco+"\nValor: "+valorTotal , Toast.LENGTH_LONG).show();
+//                getParentFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.fragContainer, FragmentExibirPedido.class, params)
+//                        .commit();
                 break;
         }
+    }
+
+    public void atualizaValorTotal(View view){
+        TextView txtPreco = view.findViewById(R.id.tvPrecoProdSelecionado);
+        TextView txtQuantidade = view.findViewById(R.id.tvQuantidade);
+
+        float preco = Float.parseFloat(txtPreco.getText().toString());
+        int quantidade = Integer.parseInt(txtQuantidade.getText().toString());
+
+        valorTotal= preco * quantidade;
+        TextView txtValorTotal= viewCarrinho.findViewById(R.id.tvValorTotal);
+        txtValorTotal.setText("R$ "+ String.valueOf(valorTotal));
     }
 }

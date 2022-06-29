@@ -6,15 +6,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+/* Alunos:
+*   Enrico Nanartonis Rea
+*   Guilherme Hampl Aragoni
+*   Pedro Ferreira
+* */
     private EditText txtUsuario, txtSenha;
     private Button btLogin, btRegistrar, btPopular;
     private provaDatabase provaDB;
@@ -77,12 +83,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btPopular:
                 Toast.makeText(this, "Produto adicionado!", Toast.LENGTH_SHORT).show();
-//                prod.nome="sushi";
-//                prod.preco=50.0;
-//                prod.desconto=15.0;
-//                prod.descricao="Sushi é um prato da culinária japonesa.";
-////                Bitmap imagem = BitmapFactory.decodeResource(getResources(), R.drawable.imgcomida);
-////                prod.imagem = imagem;
+                prod.nome="sushi";
+                prod.preco=50.0;
+                prod.desconto=15.0;
+                prod.descricao="Sushi é um prato da culinária japonesa.";
+                ImageView viewImg = new ImageView(this);
+                viewImg.setImageResource(R.drawable.sushi);
+                Bitmap imagem = ((BitmapDrawable) viewImg.getDrawable()).getBitmap();
+                prod.imagem = imagem;
                 provaDB.produtoDAO().insert(prod);
                 break;
         }

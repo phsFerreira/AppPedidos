@@ -115,7 +115,7 @@ public class TelaAdicionarEditar extends AppCompatActivity implements View.OnCli
                 descricao=txtDescricao.getText().toString();
 
                 if(produto_id==0){
-                    if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty() || descricao.isEmpty())
+                    if(nome.isEmpty() || preco.isEmpty() || desconto.isEmpty() || descricao.isEmpty() || imagemSelecionada==null)
                         Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                     else{
                         Produto prod=new Produto();

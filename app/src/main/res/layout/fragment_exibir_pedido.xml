@@ -22,11 +22,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvValorTotal"
+            android:id="@+id/tvValorTotalFinal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="TextView"
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvPedidoFinal" />
@@ -41,10 +40,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvValorTotal" />
+            app:layout_constraintTop_toBottomOf="@+id/tvValorTotalFinal" />
 
         <TextView
-            android:id="@+id/tvMetodoPagamento"
+            android:id="@+id/tvMetodoPagamentoFinal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="pagamento"
@@ -68,17 +67,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
+            android:id="@+id/tvEnderecoFinal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:text="endereco"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

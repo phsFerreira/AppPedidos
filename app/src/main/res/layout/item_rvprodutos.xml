@@ -42,7 +42,7 @@
             android:id="@+id/btAddProduto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/ic_additem"/>
 
@@ -50,7 +50,7 @@
             android:id="@+id/btRemoverProduto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/ic_removeritem"/>
     </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.prova02.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,14 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.prova02.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentExibirPedido#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentExibirPedido extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -30,15 +28,6 @@ public class FragmentExibirPedido extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentExibirPedido.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentExibirPedido newInstance(String param1, String param2) {
         FragmentExibirPedido fragment = new FragmentExibirPedido();
         Bundle args = new Bundle();
@@ -55,12 +44,26 @@ public class FragmentExibirPedido extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+//        TextView tvEndereco = getActivity().findViewById(R.id.tvEnderecoFinal);
+//        TextView tvMetodoPagamento = getActivity().findViewById(R.id.tvMetodoPagamentoFinal);
+//        TextView tvValortotal = getActivity().findViewById(R.id.tvValorTotalFinal);
+//
+//        Intent it = this.getActivity().getIntent();
+//        Bundle params = it.getExtras();
+//
+//        int i=0;
+//        tvEndereco.setText(params.getString("endereco"));
+//        tvMetodoPagamento.setText(params.getString("metodo pagamento"));
+//        tvValortotal.setText(params.getString("valor total"));
+
         return inflater.inflate(R.layout.fragment_exibir_pedido, container, false);
     }
 }
